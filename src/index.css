@@ -15,6 +15,17 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  font-size: 16px; /* Ensure base font size for mobile */
+}
+
+/* Prevent horizontal scroll on mobile */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Beautiful floral background patterns */
@@ -481,34 +492,57 @@ html, body {
 
 /* Typography improvements */
 .heading-xl {
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight;
   font-family: 'Playfair Display', serif;
   line-height: 1.1;
 }
 
 .heading-lg {
-  @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight;
   font-family: 'Playfair Display', serif;
   line-height: 1.2;
 }
 
 .heading-md {
-  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight;
   font-family: 'Playfair Display', serif;
   line-height: 1.3;
 }
 
 .heading-sm {
-  @apply text-xl md:text-2xl font-semibold tracking-tight;
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-tight;
   line-height: 1.4;
 }
 
 .body-lg {
-  @apply text-lg md:text-xl leading-relaxed;
+  @apply text-base sm:text-lg md:text-xl leading-relaxed;
 }
 
 .body-md {
-  @apply text-base md:text-lg leading-relaxed;
+  @apply text-sm sm:text-base md:text-lg leading-relaxed;
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 640px) {
+  .heading-xl {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .heading-lg {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .heading-md {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  .body-lg, .body-md {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 .scrolling-collage {
@@ -565,11 +599,24 @@ h1, h2, h3, h4, h5, h6, label, .main-heading {
 
 /* Improved spacing system */
 .section-padding {
-  @apply py-16 md:py-20 lg:py-24;
+  @apply py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24;
 }
 
 .container-padding {
-  @apply px-4 sm:px-6 lg:px-8;
+  @apply px-3 sm:px-4 md:px-6 lg:px-8;
+}
+
+/* Mobile-specific container padding */
+@media (max-width: 640px) {
+  .container-padding {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .section-padding {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
 }
 
 /* Enhanced hover effects */
@@ -597,6 +644,13 @@ h1, h2, h3, h4, h5, h6, label, .main-heading {
 
 /* Responsive utilities */
 @media (max-width: 640px) {
+  /* Disable hover effects on mobile */
+  .hover-lift:hover,
+  .magnetic-hover:hover,
+  .card-hover-3d:hover {
+    transform: none !important;
+  }
+  
   .mobile-center {
     @apply text-center;
   }
@@ -608,11 +662,124 @@ h1, h2, h3, h4, h5, h6, label, .main-heading {
   .mobile-stack {
     @apply flex-col space-y-4 space-x-0;
   }
+  
+  /* Ensure buttons are touch-friendly */
+  .btn-primary, .btn-secondary, .btn-ghost {
+    min-height: 44px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Make cards stack properly */
+  .modern-card {
+    margin: 0.5rem 0 !important;
+    padding: 1rem !important;
+  }
+  
+  /* Fix grid layouts */
+  .grid {
+    gap: 1rem !important;
+  }
+  
+  /* Ensure text doesn't overflow */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 }
 
-/* Hero section main div padding */
-.relative.z-10.max-w-5xl.mx-auto.text-center.container-padding.glass.magnetic-hover.animate-bounce-in.overflow-y-auto {
-  padding: 1rem;
+/* Tablet responsive adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .heading-xl {
+    font-size: 2.5rem !important;
+  }
+  
+  .heading-lg {
+    font-size: 2rem !important;
+  }
+  
+  .container-padding {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1025px) {
+  .container-padding {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+
+/* Fix specific mobile issues */
+@media (max-width: 640px) {
+  /* Hero section responsive */
+  .glass {
+    padding: 1rem !important;
+    margin: 0.5rem !important;
+    border-radius: 1rem !important;
+  }
+  
+  /* Navigation improvements */
+  .lg\:hidden {
+    display: block !important;
+  }
+  
+  /* Form improvements */
+  .modern-input, .modern-textarea {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+    padding: 0.75rem !important;
+  }
+  
+  /* Gallery grid responsive */
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  /* Testimonials responsive */
+  .space-y-12 {
+    padding: 1rem !important;
+  }
+  
+  .modern-card.p-8,
+  .modern-card.p-12 {
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+  }
+}
+
+/* Fix overflow issues */
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix flexbox issues on mobile */
+@media (max-width: 640px) {
+  .flex {
+    flex-wrap: wrap;
+  }
+  
+  .flex-col {
+    flex-direction: column !important;
+  }
+  
+  .space-x-4 > * + * {
+    margin-left: 0 !important;
+    margin-top: 1rem !important;
+  }
+  
+  .space-x-6 > * + * {
+    margin-left: 0 !important;
+    margin-top: 1.5rem !important;
+  }
 }
 
 /* Testimonials grid background */
@@ -1085,5 +1252,77 @@ h1, h2, h3, h4, h5, h6, label, .main-heading {
 .animate-delay-200,
 .animate-delay-300 {
   animation: none !important;
+}
+
+/* Mobile-specific fixes for common issues */
+@media (max-width: 640px) {
+  /* Fix viewport issues */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  /* Fix touch targets */
+  button, a, input, textarea, select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Fix modal positioning */
+  .fixed {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+  
+  /* Fix z-index stacking */
+  .z-50 {
+    z-index: 9999 !important;
+  }
+  
+  /* Improve readability */
+  .text-xs {
+    font-size: 0.75rem !important;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Fix table responsiveness */
+  table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+  
+  /* Fix admin dashboard on mobile */
+  .sidebar {
+    width: 100% !important;
+    height: 100vh !important;
+  }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 640px) {
+  /* Reduce animations for better performance */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Disable parallax on mobile */
+  .parallax-bg {
+    background-attachment: scroll !important;
+  }
+  
+  /* Simplify shadows for performance */
+  .shadow-lg, .shadow-xl, .shadow-2xl {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  }
 }
 

@@ -644,43 +644,43 @@ const AdminDashboard = () => {
 
   // Update main background and card styles
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-cyan-50 flex flex-col" aria-label="Admin Dashboard">
+    <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-cyan-50 flex flex-col overflow-x-hidden" aria-label="Admin Dashboard">
       {/* Mobile Header */}
-      <div className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200/50 p-4 shadow-sm" style={{ position: 'sticky', top: 0, zIndex: 30 }}>
+      <div className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200/50 p-3 sm:p-4 shadow-sm" style={{ position: 'sticky', top: 0, zIndex: 30 }}>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="relative">
-              <Sparkles className="h-6 w-6 text-cyan-500 mr-2 transition-all duration-300 hover:scale-110 hover:rotate-12" />
-              <div className="absolute inset-0 h-6 w-6 bg-cyan-500/20 rounded-full blur-md animate-pulse"></div>
+              <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-500 mr-2 transition-all duration-300 hover:scale-110 hover:rotate-12" />
+              <div className="absolute inset-0 h-5 w-5 sm:h-6 sm:w-6 bg-cyan-500/20 rounded-full blur-md animate-pulse"></div>
             </div>
-            <h1 className="text-xl font-bold text-black tracking-wider" style={{ fontFamily: 'Playfair Display, serif' }}>Admin Dashboard</h1>
+            <h1 className="text-base sm:text-lg md:text-xl font-bold text-black tracking-wider" style={{ fontFamily: 'Playfair Display, serif' }}>Admin Dashboard</h1>
           </div>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-all duration-300"
+            className="text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-all duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Toggle sidebar"
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
         </div>
       </div>
 
       <div className="flex flex-1">
         {/* Sidebar */}
-        <div className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:sticky lg:top-0 lg:self-start w-64 bg-white/95 backdrop-blur-xl border-r border-gray-200/50 transition-transform duration-300 ease-in-out shadow-lg`} style={{overflowY: 'auto'}}>
-          <div className="p-6 flex flex-col h-full">
+        <div className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:sticky top-0 left-0 lg:self-start w-64 sm:w-72 lg:w-64 h-full lg:h-auto bg-white/95 backdrop-blur-xl border-r border-gray-200/50 transition-transform duration-300 ease-in-out shadow-lg z-40 lg:z-auto`} style={{overflowY: 'auto'}}>
+          <div className="p-4 sm:p-6 flex flex-col h-full min-h-screen lg:min-h-0">
             <div className="flex items-center mb-8">
               <div className="relative">
-                <Sparkles className="h-8 w-8 text-cyan-500 mr-3 transition-all duration-300 hover:scale-110 hover:rotate-12" />
-                <div className="absolute inset-0 h-8 w-8 bg-cyan-500/20 rounded-full blur-md animate-pulse"></div>
+                <Sparkles className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-cyan-500 mr-2 sm:mr-3 transition-all duration-300 hover:scale-110 hover:rotate-12" />
+                <div className="absolute inset-0 h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 bg-cyan-500/20 rounded-full blur-md animate-pulse"></div>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-black tracking-wider" style={{ fontFamily: 'Playfair Display, serif' }}>SPAARK ELITE EVENTS</h1>
-                <p className="text-sm italic text-black" style={{ fontFamily: 'Playfair Display, serif' }}>Admin Panel</p>
+                <h1 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-black tracking-wider" style={{ fontFamily: 'Playfair Display, serif' }}>SPAARK ELITE EVENTS</h1>
+                <p className="text-xs sm:text-sm italic text-black" style={{ fontFamily: 'Playfair Display, serif' }}>Admin Panel</p>
               </div>
             </div>
 
-            <nav className="space-y-2 mt-8">
+            <nav className="space-y-1 sm:space-y-2 mt-6 sm:mt-8">
               {sidebarItems.map((item) => {
                 const IconComponent = item.icon;
                 const isActive = activeTab === item.id;
@@ -692,25 +692,25 @@ const AdminDashboard = () => {
                       setSidebarOpen(false);
                       setIsEditing(false);
                     }}
-                    className={`w-full flex items-center px-4 py-3 rounded-lg transition-all font-semibold futuristic-btn ${
+                    className={`w-full flex items-center px-3 sm:px-4 py-2 sm:py-3 rounded-lg transition-all font-semibold futuristic-btn min-h-[44px] ${
                       isActive
                         ? 'bg-cyan-500 text-white font-bold shadow-medium' : 'text-gray-700 hover:bg-cyan-50 hover:text-cyan-600'
                     }`}
                   >
-                    <IconComponent className={`h-5 w-5 mr-3 ${isActive ? 'text-white' : 'text-cyan-700'}`} />
-                    {item.label}
+                    <IconComponent className={`h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 flex-shrink-0 ${isActive ? 'text-white' : 'text-cyan-700'}`} />
+                    <span className="text-sm sm:text-base">{item.label}</span>
                   </button>
                 );
               })}
             </nav>
 
-            <div className="mt-8 pt-8 border-t border-cyan-200 pb-8">
+            <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-cyan-200 pb-6 sm:pb-8">
               <button
                 onClick={() => navigate('/')}
-                className="w-full flex items-center px-4 py-3 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 rounded-lg transition-all font-semibold"
+                className="w-full flex items-center px-3 sm:px-4 py-2 sm:py-3 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 rounded-lg transition-all font-semibold min-h-[44px]"
               >
-                <Home className="h-5 w-5 mr-3" />
-                Back to Website
+                <Home className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 flex-shrink-0" />
+                <span className="text-sm sm:text-base">Back to Website</span>
               </button>
             </div>
           </div>
@@ -719,15 +719,15 @@ const AdminDashboard = () => {
         {/* Overlay for mobile */}
         {sidebarOpen && (
           <div
-            className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
             onClick={() => setSidebarOpen(false)}
           />
         )}
 
         {/* Main Content */}
-        <div className="flex-1">
-          <div className="p-6 lg:p-8">
-            <div className="modern-card p-8 animate-fade-in-up">
+        <div className="flex-1 w-full min-w-0">
+          <div className="p-4 sm:p-6 lg:p-8">
+            <div className="modern-card p-4 sm:p-6 md:p-8 animate-fade-in-up">
               {renderContent()}
             </div>
           </div>
@@ -735,7 +735,7 @@ const AdminDashboard = () => {
       </div>
       {/* Footer (shared with main site) */}
       <footer>
-        <div className="border-t border-gray-200/50 py-6 text-center text-gray-500 text-sm bg-white/95 backdrop-blur-xl">
+        <div className="border-t border-gray-200/50 py-4 sm:py-6 text-center text-gray-500 text-xs sm:text-sm bg-white/95 backdrop-blur-xl">
           © 2025 Spaark Elite Events. All rights reserved.
         </div>
       </footer>

@@ -48,31 +48,31 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-white via-slate-50 to-cyan-50" aria-label="Admin Login">
-      <div className="max-w-md w-full mx-4 reveal animate-fade-in-up">
-        <div className="modern-card p-8">
-          <div className="text-center mb-8">
-            <div className="bg-gradient-to-br from-cyan-500 to-cyan-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-large">
-              <Lock className="h-8 w-8" />
+    <div className="min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white via-slate-50 to-cyan-50 px-4" aria-label="Admin Login">
+      <div className="max-w-sm sm:max-w-md w-full reveal animate-fade-in-up">
+        <div className="modern-card p-6 sm:p-8">
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="bg-gradient-to-br from-cyan-500 to-cyan-600 text-white w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-large">
+              <Lock className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8" />
             </div>
-            <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-black" style={{ fontFamily: 'Playfair Display, serif' }}>
               SPAARK ELITE EVENTS
             </h1>
-            <p className="text-xl italic mb-4 text-black" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <p className="text-base sm:text-lg md:text-xl italic mb-3 sm:mb-4 text-black" style={{ fontFamily: 'Playfair Display, serif' }}>
               Luxury. Celebration. Perfection.
             </p>
-            <h2 className="text-2xl font-light dark-blue-hero-text mb-4">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-light dark-blue-hero-text mb-3 sm:mb-4">
               Admin Access Portal
             </h2>
-            <p className="text-gray-600">Sign in to manage your events platform</p>
+            <p className="text-gray-600 text-sm sm:text-base">Sign in to manage your events platform</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
-              <label htmlFor="email" className="block text-cyan-700 font-semibold mb-2">Email</label>
+              <label htmlFor="email" className="block text-cyan-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Email</label>
               <div className="relative">
                 {!credentials.email && (
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 )}
                 <input
                   type="email"
@@ -81,17 +81,17 @@ const AdminLogin = () => {
                   required
                   value={credentials.email}
                   onChange={handleInputChange}
-                  className={`modern-input ${!credentials.email ? 'pl-10' : 'pl-4'}`}
+                  className={`modern-input text-base min-h-[44px] ${!credentials.email ? 'pl-9 sm:pl-10' : 'pl-3 sm:pl-4'}`}
                   placeholder="     Enter your email"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-cyan-700 font-semibold mb-2">Password</label>
+              <label htmlFor="password" className="block text-cyan-700 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Password</label>
               <div className="relative">
                 {!credentials.password && (
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 )}
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -100,22 +100,22 @@ const AdminLogin = () => {
                   required
                   value={credentials.password}
                   onChange={handleInputChange}
-                  className={`modern-input ${!credentials.password ? 'pl-10' : 'pl-4'} pr-12`}
+                  className={`modern-input text-base min-h-[44px] ${!credentials.password ? 'pl-9 sm:pl-10' : 'pl-3 sm:pl-4'} pr-10 sm:pr-12`}
                   placeholder="     Enter your password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan-500"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan-500 min-h-[44px] min-w-[44px] flex items-center justify-center"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  {showPassword ? <EyeOff className="h-4 w-4 sm:h-5 sm:w-5" /> : <Eye className="h-4 w-4 sm:h-5 sm:w-5" />}
                 </button>
               </div>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-2 sm:py-3 rounded-xl text-sm sm:text-base">
                 {error}
               </div>
             )}
@@ -123,11 +123,11 @@ const AdminLogin = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full btn-primary px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none flex items-center justify-center shadow-large"
+              className="w-full btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none flex items-center justify-center shadow-large min-h-[44px]"
             >
               {isLoading ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white mr-2"></div>
                   Signing In...
                 </>
               ) : (
@@ -136,7 +136,7 @@ const AdminLogin = () => {
             </button>
           </form>
 
-          <div className="mt-6 text-center text-gray-400 text-sm">
+          <div className="mt-4 sm:mt-6 text-center text-gray-400 text-xs sm:text-sm">
             <p>Secure access for authorized administrators only</p>
           </div>
         </div>
